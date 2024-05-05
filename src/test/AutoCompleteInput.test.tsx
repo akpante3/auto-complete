@@ -20,6 +20,24 @@ describe("AutoCompleteInput", () => {
       />
     );
   });
+    // Test passing Props
+    it("input should respond to defaultInputValue, disableInput and inputLabel props", () => {
+      render(
+        <AutoCompleteInput
+          getOptions={async () => ["option 1", "option 2"]}
+          inputPlaceHolder="Search"
+          disableInput={false}
+          inputLabel={'label'}
+          defaultInputValue={'input'}
+        />
+      );
+      const inputElement = screen.getByRole("combobox");
+      expect(inputElement).toHaveValue('input');
+
+      const inputLabel = screen.getByTestId('input-label');
+      expect(inputLabel).toBeInTheDocument();
+
+    });
   // testing All  Props
   it("should renders input placeholder correctly", () => {
     render(

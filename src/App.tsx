@@ -13,6 +13,7 @@ function App() {
   const fetchUniversities = async () => {
     try {
       if (universities.length > 0) {
+        console.log('call')
         return universities;
       }
 
@@ -38,15 +39,15 @@ function App() {
   // TODO: fetchUniversities on page load
   useEffect(() => {
     fetchUniversities();
-  }, []);
+  }, [universities]);
 
   return (
     <main className="App">
-      <h5 style={{marginTop:'100px'}}>Search For Uiversities In The United States</h5>
       <AutoCompleteInput
         inputPlaceHolder={"Search University..."}
         getOptions={fetchUniversities}
         classes={["auto-complete-container"]}
+        inputLabel = "Search For Universities In The United States"
       />
     </main>
   );

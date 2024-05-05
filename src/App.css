@@ -1,10 +1,11 @@
 .auto-complete-container {
   max-width: 508px;
   margin: 0 auto;
-  margin-top: 10px;
+  margin-top: 100px;
+
 }
 .auto-complete-container input {
-  border-radius: 15px;
+  border-radius: 5px;
 }
 
 .App {

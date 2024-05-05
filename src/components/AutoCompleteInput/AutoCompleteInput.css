@@ -30,3 +30,10 @@ input {
 .auto-complete-options li:focus {
   background-color: #f1f2f3;
 }
+.input-label {
+    display: flex;
+    align-self: flex-start;
+    margin-bottom: 8px;
+    text-transform: capitalize;
+    font-weight: 500;
+}

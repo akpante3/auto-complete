@@ -11,17 +11,14 @@ import React, {
 import "./AutoCompleteInput.css";
 
 interface AutoCompleteInputProps {
-  // TODO: look for proper names to give the getOptions method
   getOptions: () => Promise<string[]>;
   inputPlaceHolder: string;
   disableInput?: boolean;
   defaultInputValue?: string;
   classes?: string[];
+  inputLabel?: string;
   // TODO:  options should be used to pass static option list, in cases why async data is not being used
   // options?: string[];
-  // TODO:  onInputChange?: () => {}
-  // accepts a callback, will dispatch the inputValue to the Parent component
-  // TODO: inputLabel: string
 }
 
 const AutoCompleteInput: React.FC<AutoCompleteInputProps> = ({
@@ -30,17 +27,18 @@ const AutoCompleteInput: React.FC<AutoCompleteInputProps> = ({
   disableInput = false,
   defaultInputValue = "",
   classes = [],
+  inputLabel = "",
   //   options = [],
 }) => {
   const listRef = useRef<HTMLUListElement | null>(null);
   const listItemRefs = useRef<(HTMLLIElement | null)[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
+  let timeoutIDRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const [inputValue, setInputValue] = useState(defaultInputValue);
   const [filteredOptions, setFilteredOptions] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
 
-  let timeoutIDRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const handleOptionClick = (text: string) => {
     setInputValue(text);
@@ -116,7 +114,7 @@ const AutoCompleteInput: React.FC<AutoCompleteInputProps> = ({
 
     timeoutIDRef.current = setTimeout(() => {
       getListItems(e, value);
-    }, 500);
+    }, 400);
   }, []);
 
   // Keyboard Event: Key Down
@@ -184,6 +182,11 @@ const AutoCompleteInput: React.FC<AutoCompleteInputProps> = ({
 
   return (
     <section className={["auto-complete-input", ...classes].join(" ")}>
+      {inputLabel ? (
+        <label data-testid={'input-label'} htmlFor="auto-complete-input" className="input-label">
+          {inputLabel}
+        </label>
+      ) : null}
       <input
         type="text"
         value={inputValue}
