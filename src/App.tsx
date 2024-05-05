@@ -1,25 +1,54 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect, useState } from "react";
+import "./App.css";
+import AutoCompleteInput from "./components/AutoCompleteInput";
+
+interface University {
+  name: string;
+}
 
 function App() {
+  const [universities, setUniversities] = useState<string[]>([]);
+
+  const fetchUniversities = async () => {
+    try {
+      if (universities.length > 0) {
+        return universities;
+      }
+
+      const response = await fetch(
+        `http://universities.hipolabs.com/search?country=United+States`
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch universities");
+      }
+
+      const data: University[] = await response.json();
+
+      const namesOfUniversity = data.map((uni) => uni.name.toLowerCase());
+      setUniversities(namesOfUniversity);
+      return namesOfUniversity;
+    } catch (error) {
+      alert("error");
+      return [];
+    }
+  };
+
+  // TODO: fetchUniversities on page load
+  useEffect(() => {
+    fetchUniversities();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main className="App">
+      <h5 style={{marginTop:'100px'}}>Search For Uiversities In The United States</h5>
+      <AutoCompleteInput
+        inputPlaceHolder={"Search University..."}
+        getOptions={fetchUniversities}
+        classes={["auto-complete-container"]}
+      />
+    </main>
   );
 }
 

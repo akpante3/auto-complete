@@ -1,0 +1,32 @@
+.auto-complete-input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+input {
+    height: 50px;
+    text-indent: 10px;
+    border: solid 1px #f1f2f3;
+}
+.auto-complete-options, input {
+    width: 100%;
+ }
+
+.auto-complete-options {
+    padding: 0px;
+    list-style: none;
+}
+.auto-complete-options li {
+    display: flex;
+    align-content: left;
+    border-bottom: solid #f1f2f3 1px;
+    padding-left: 10px;
+    cursor: pointer;
+    outline: none;
+}
+
+.auto-complete-options li:focus {
+  background-color: #f1f2f3;
+}
