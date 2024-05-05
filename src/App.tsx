@@ -13,7 +13,6 @@ function App() {
   const fetchUniversities = async () => {
     try {
       if (universities.length > 0) {
-        console.log('call')
         return universities;
       }
 
