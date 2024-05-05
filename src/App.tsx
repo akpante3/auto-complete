@@ -35,7 +35,6 @@ function App() {
     }
   };
 
-  // TODO: fetchUniversities on page load
   useEffect(() => {
     fetchUniversities();
   }, [universities]);
