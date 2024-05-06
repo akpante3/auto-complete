@@ -81,10 +81,9 @@ export function useAutoCompleteUtils() {
       setLoading(false);
     }
   };
-  // Debounce fuction
 
 
-  // Keyboard Event: Key Down
+  // Keyboard Event: KeyDown
   const handleInputKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "ArrowDown" && listRef.current) {
       const firstListItem = listRef.current.querySelector("li");

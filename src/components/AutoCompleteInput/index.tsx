@@ -98,9 +98,9 @@ const AutoCompleteInput: React.FC<AutoCompleteInputProps> = ({
         aria-labelledby="auto-complete-input"
       />
 
-      {loading ? <p data-testid="loader">loading...</p> : null}
+      {/* {loading ? <p data-testid="loader">loading...</p> : null} */}
 
-      {filteredOptions.length > 0 && !loading && (
+      {filteredOptions.length > 0  && (
         <ul id="options-list" className="auto-complete-options" ref={listRef}>
           {filteredOptions.map((option, index) => (
             <li
