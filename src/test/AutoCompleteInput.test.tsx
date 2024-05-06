@@ -8,9 +8,6 @@ import {
 import AutoCompleteInput from "../components/AutoCompleteInput";
 
 describe("AutoCompleteInput", () => {
-  afterEach(() => {
-    cleanup();
-  });
   // Render
   it("should renders without crashing", () => {
     render(
@@ -66,7 +63,6 @@ describe("AutoCompleteInput", () => {
     await waitFor(() => {
       expect(inputElement.value).toBe("test");
     });
-    cleanup();
   });
   // Render Options
   it("should renders options list correctly", async () => {
@@ -90,7 +86,7 @@ describe("AutoCompleteInput", () => {
       expect(option2).toBeInTheDocument();
     });
   });
-  // Options Click
+  // Options Click Event
   it("should selects an option value, onClick of option", async () => {
     let option1;
     render(
@@ -112,8 +108,6 @@ describe("AutoCompleteInput", () => {
     await waitFor(async () => {
       await expect(inputElement).toHaveValue("option1");
     });
-
-    cleanup();
   });
   // EVENT: Keyboard event "Enter"
   it("should selects an option value on keyboard Enter", async () => {
@@ -137,8 +131,6 @@ describe("AutoCompleteInput", () => {
     await waitFor(async () => {
       await expect(inputElement).toHaveValue("option1");
     });
-
-    cleanup();
   });
 
   it("should focus on the inputElement on keyboard event: Arrow UP", async () => {
@@ -162,8 +154,6 @@ describe("AutoCompleteInput", () => {
     await waitFor(async () => {
       await expect(inputElement).toHaveFocus();
     });
-
-    cleanup();
   });
 
   it("should selects an option value on keyboard event Arrow Down", async () => {
@@ -187,9 +177,6 @@ describe("AutoCompleteInput", () => {
     await waitFor(async () => {
       await expect(inputElement).toHaveValue("optio");
     });
-
-    cleanup();
   });
 
-  // Add more tests as neede
 });

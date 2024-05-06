@@ -11,9 +11,7 @@ const mockFetch = jest.fn();
 global.fetch = mockFetch;
 
 describe('App Component', () => {
-  afterEach(() => {
-    cleanup();
-  });
+
   it('renders SearchInput component with placeholder and options', async () => {
     
 

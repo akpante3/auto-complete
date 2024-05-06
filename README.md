@@ -41,11 +41,11 @@ To get a local copy up and running follow these simple example steps.
 
 1. Clone the repo
      ```sh
-     https://github.com/akpante3/grouped-tasks.git
+     https://github.com/akpante3/auto-complete.git
      ```
 2. Cd into the project directory
      ```sh
-     cd grouped-tasks
+     cd auto-complete
      ```
 3. Install NPM packages
      ```sh
