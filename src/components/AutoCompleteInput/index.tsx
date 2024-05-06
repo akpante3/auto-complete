@@ -24,6 +24,7 @@ interface AutoCompleteInputProps {
   // onEnter?:() => void
   // highlightColor: string
   // showLoading: boolean
+  // placeHolderImage: string
 
 }
 
@@ -109,7 +110,7 @@ const AutoCompleteInput: React.FC<AutoCompleteInputProps> = ({
 
       {/* {loading ? <p data-testid="loader">loading...</p> : null} */}
 
-      {filteredOptions.length > 0  && (
+      {filteredOptions.length > 0  && !loading && (
         <ul id="options-list" className={['auto-complete-options', ...optionsClasses].join(" ")}  ref={listRef}>
           {filteredOptions.map((option, index) => (
             <li

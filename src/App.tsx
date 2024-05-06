@@ -13,6 +13,7 @@ function App() {
   const fetchUniversities = async () => {
     try {
       if (universities.length > 0) {
+        console.log('called here!')
         return universities;
       }
 
@@ -37,7 +38,7 @@ function App() {
 
   useEffect(() => {
     fetchUniversities();
-  }, []);
+  }, [universities]);
 
   return (
     <main className="App">
