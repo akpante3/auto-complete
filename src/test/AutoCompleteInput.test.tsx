@@ -3,7 +3,6 @@ import {
   fireEvent,
   waitFor,
   screen,
-  cleanup,
 } from "@testing-library/react";
 import AutoCompleteInput from "../components/AutoCompleteInput";
 
@@ -109,7 +108,7 @@ describe("AutoCompleteInput", () => {
       await expect(inputElement).toHaveValue("option1");
     });
   });
-  // EVENT: Keyboard event "Enter"
+  // Keyboard event "Enter"
   it("should selects an option value on keyboard Enter", async () => {
     let option1;
     render(
