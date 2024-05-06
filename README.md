@@ -41,11 +41,11 @@ To get a local copy up and running follow these simple example steps.
 
 1. Clone the repo
      ```sh
-     https://github.com/akpante3/auto-complete.git
+     https://github.com/akpante3/grouped-tasks.git
      ```
 2. Cd into the project directory
      ```sh
-     cd auto-complete
+     cd grouped-tasks
      ```
 3. Install NPM packages
      ```sh
@@ -62,13 +62,21 @@ Run Test:
 1.  ```sh
     npm run test
       ```
-test file can be found in src --> test 
+
 
 
 
 
 <!-- USAGE EXAMPLES -->
 ## Usage
+
+#### Keyboard interactions 
+
+- ``Down`` - Move focus to the next option.
+- ``Up`` - Move focus to the previous option.
+- ``Enter`` - Select the focused option.
+
+
 
 #### Components
 
@@ -88,6 +96,11 @@ test file can be found in src --> test
 | Prop | Description | Type |
 | --- | --- | --- |
 | options | Allows the use of a static option list, but not simultaneously with `getOptions`. | string[] |
+|menuClassName	| 	A CSS class to apply to the Menu DOM | string |
+|onChange |	Called when select an option or input value change, or value of input is changed| (value:string, event) => void    |
+|onClose	| Callback fired when hidden | () => void |
+|onEnter |	Callback fired before the overlay transitions in | () => void |
+
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

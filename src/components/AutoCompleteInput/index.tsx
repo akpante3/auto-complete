@@ -15,8 +15,16 @@ interface AutoCompleteInputProps {
   defaultInputValue?: string;
   classes?: string[];
   inputLabel?: string;
-  // TODO:  options should be used to pass static option list, in cases why async data is not being used
-  // options?: string[];
+  optionsClasses?: string[]
+  // TODO:  
+  // options?: string[]; options should be used to pass static option list, in cases why async data is not being used
+  // menuClassName?:  string
+  // onChange?:(value:string, event) => void
+  // onClose?:() => void
+  // onEnter?:() => void
+  // highlightColor: string
+  // showLoading: boolean
+
 }
 
 const AutoCompleteInput: React.FC<AutoCompleteInputProps> = ({
@@ -26,6 +34,7 @@ const AutoCompleteInput: React.FC<AutoCompleteInputProps> = ({
   defaultInputValue = "",
   classes = [],
   inputLabel = "",
+  optionsClasses= []
   //   options = [],
 }) => {
   const {
@@ -101,7 +110,7 @@ const AutoCompleteInput: React.FC<AutoCompleteInputProps> = ({
       {/* {loading ? <p data-testid="loader">loading...</p> : null} */}
 
       {filteredOptions.length > 0  && (
-        <ul id="options-list" className="auto-complete-options" ref={listRef}>
+        <ul id="options-list" className={['auto-complete-options', ...optionsClasses].join(" ")}  ref={listRef}>
           {filteredOptions.map((option, index) => (
             <li
               key={index}
