@@ -36,9 +36,9 @@ function App() {
     }
   };
 
-  useEffect(() => {
-    fetchUniversities();
-  }, [universities]);
+  // useEffect(() => {
+  //   fetchUniversities();
+  // }, [universities]);
 
   return (
     <main className="App">
