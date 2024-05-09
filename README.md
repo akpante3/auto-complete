@@ -45,7 +45,7 @@ To get a local copy up and running follow these simple example steps.
      ```
 2. Cd into the project directory
      ```sh
-     cd grouped-tasks
+     cd auto-complete
      ```
 3. Install NPM packages
      ```sh
@@ -90,6 +90,8 @@ Run Test:
 | classes | An array of custom CSS classes to style the AutoCompleteInput component |string[] |
 | defaultInputValue | Specifies a default value to be displayed in the input field |string |
 | inputLabel | Specifies the Input <label> |string |
+|onChange |	Called when select an option or input value change, or value of input is changed| (value:string) => void    |
+| optionsClasses | An array of custom CSS classes to style the options list <ul>  |string[] |
 
 **Pending Features**
 
@@ -97,7 +99,6 @@ Run Test:
 | --- | --- | --- |
 | options | Allows the use of a static option list, but not simultaneously with `getOptions`. | string[] |
 |menuClassName	| 	A CSS class to apply to the Menu DOM | string |
-|onChange |	Called when select an option or input value change, or value of input is changed| (value:string, event) => void    |
 |onClose	| Callback fired when hidden | () => void |
 |onEnter |	Callback fired before the overlay transitions in | () => void |
 

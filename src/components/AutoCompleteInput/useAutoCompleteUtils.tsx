@@ -10,6 +10,7 @@ export function useAutoCompleteUtils() {
   const listRef = useRef<HTMLUListElement | null>(null);
   const listItemRefs = useRef<(HTMLLIElement | null)[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
+  const inputValueRef = useRef<string>('')
 
 
 
@@ -153,6 +154,7 @@ export function useAutoCompleteUtils() {
     filteredOptions,
     loading,
     handleOptionClick,
-    listRef
+    listRef,
+    inputValueRef
   };
 }

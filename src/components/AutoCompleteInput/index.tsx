@@ -16,15 +16,15 @@ interface AutoCompleteInputProps {
   classes?: string[];
   inputLabel?: string;
   optionsClasses?: string[]
+  onChange?:(value:string) => void
   // TODO:  
   // options?: string[]; options should be used to pass static option list, in cases why async data is not being used
   // menuClassName?:  string
-  // onChange?:(value:string, event) => void
   // onClose?:() => void
   // onEnter?:() => void
   // highlightColor: string
   // showLoading: boolean
-  // placeHolderImage: string
+  // placeHolderIcon: string
 
 }
 
@@ -35,7 +35,8 @@ const AutoCompleteInput: React.FC<AutoCompleteInputProps> = ({
   defaultInputValue = "",
   classes = [],
   inputLabel = "",
-  optionsClasses= []
+  optionsClasses= [],
+  onChange
   //   options = [],
 }) => {
   const {
@@ -52,6 +53,7 @@ const AutoCompleteInput: React.FC<AutoCompleteInputProps> = ({
     handleOptionClick,
     getListItems,
     listRef,
+    inputValueRef
   } = useAutoCompleteUtils();
   let timeoutIDRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -62,10 +64,14 @@ const AutoCompleteInput: React.FC<AutoCompleteInputProps> = ({
 
     const value = e.target.value;
 
-    setInputValue(value);
+    inputValueRef.current = value
+    
+    if (onChange?.length) onChange(inputValue)
+  
     // debounce
     timeoutIDRef.current = setTimeout(() => {
-      getListItems(e, value, getOptions);
+      getListItems(e, value, getOptions)
+       setInputValue(inputValueRef.current);
     }, 400);
   }, []);
 
@@ -93,7 +99,7 @@ const AutoCompleteInput: React.FC<AutoCompleteInputProps> = ({
       ) : null}
       <input
         type="text"
-        value={inputValue}
+        // value={inputValue}
         onChange={handleInputChange}
         placeholder={inputPlaceHolder}
         onKeyDown={handleInputKeyDown}
