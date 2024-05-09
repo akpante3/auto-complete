@@ -114,7 +114,7 @@ const AutoCompleteInput: React.FC<AutoCompleteInputProps> = ({
         aria-labelledby="auto-complete-input"
       />
 
-      {/* {loading ? <p data-testid="loader">loading...</p> : null} */}
+      {loading ? <p data-testid="loader">loading...</p> : null}
 
       {filteredOptions.length > 0  && !loading && (
         <ul id="options-list" className={['auto-complete-options', ...optionsClasses].join(" ")}  ref={listRef}>
